@@ -19,7 +19,7 @@ min_date = main_data_df['order_purchase_timestamp'].min()
 max_date = main_data_df['order_purchase_timestamp'].max()
 
 with st.sidebar:
-    st.image("https://github.com/hldfiadn/tren-penjualan-app/raw/main/logo.png")
+    st.image("https://github.com/hldfiadn/tren-penjualan-app/raw/main/logo_dashboard.png")
     start_date, end_date = st.date_input(
         label='Rentang Waktu',
         min_value=min_date,
