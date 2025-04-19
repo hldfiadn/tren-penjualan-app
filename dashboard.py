@@ -186,17 +186,17 @@ with main_tabs[1]:
 
     # Skor RFM
     rfm_df['r_score'] = pd.qcut(rfm_df['recency'], 4, labels=[4,3,2,1])
-    rfm_df['f_score'] = pd.qcut(rfm_df['frequency'].rank(method='first'), 4, labels=[1,2,3,4])
+    rfm_df['f_score'] = pd.qcut(rfm_df['frequency'].rank(method='first'), 1, labels=[1])
     rfm_df['m_score'] = pd.qcut(rfm_df['monetary'], 4, labels=[1,2,3,4])
     rfm_df['rfm_score'] = rfm_df[['r_score','f_score','m_score']].sum(axis=1).astype(int)
 
     # Segmentasi RFM
     def segment_customer(score):
-        if score >= 8:
+        if score >= 7:
             return 'Gold'
-        elif score >= 6:
+        elif score >= 5:
             return 'Silver'
-        elif score >= 4:
+        elif score >= 3:
             return 'Bronze'
         else:
             return 'Inactive'
