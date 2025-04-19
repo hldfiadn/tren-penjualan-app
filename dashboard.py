@@ -158,6 +158,34 @@ with main_tabs[0]:
     ax.grid(True)
     st.pyplot(fig)
 
+    
+    # ==== Tab 1.5: Analisis Metode Pembayaran ====
+    st.subheader("E. Analisis Metode Pembayaran")
+    tabs = st.tabs(["Total Nilai", "Rata-rata"])
+
+    payment_summary = main_df.groupby('payment_type')['payment_value'].agg(['count', 'sum', 'mean']).sort_values(by='sum', ascending=False)
+
+    # Total Nilai
+    with tabs[0]:
+        fig1, ax1 = plt.subplots(figsize=(12, 6))
+        sns.barplot(x=payment_summary.index, y=payment_summary['sum'], ax=ax1)
+        ax1.set_xlabel('Metode Pembayaran')
+        ax1.set_ylabel('Total Nilai Transaksi (BRL)')
+        ax1.set_title('Total Nilai Transaksi per Metode Pembayaran')
+        ax1.tick_params(axis='x', rotation=45)
+        st.pyplot(fig1)
+
+    # Rata-rata
+    with tabs[1]:
+        st.subheader("Rata-rata Nilai Transaksi per Metode Pembayaran")
+        fig2, ax2 = plt.subplots(figsize=(12, 6))
+        sns.barplot(x=payment_summary.index, y=payment_summary['mean'], ax=ax2)
+        ax2.set_xlabel('Metode Pembayaran')
+        ax2.set_ylabel('Rata-rata Nilai Transaksi')
+        ax2.set_title('Rata-rata Nilai Transaksi per Metode Pembayaran')
+        ax2.tick_params(axis='x', rotation=45)
+        st.pyplot(fig2)
+
 
 
 with main_tabs[1]:
