@@ -19,7 +19,7 @@ min_date = main_data_df['order_purchase_timestamp'].min()
 max_date = main_data_df['order_purchase_timestamp'].max()
 
 with st.sidebar:
-    st.image("https://github.com/dicodingacademy/assets/raw/main/logo.png")
+    st.image("https://github.com/hldfiadn/tren-penjualan-app/raw/main/logo.png")
     start_date, end_date = st.date_input(
         label='Rentang Waktu',
         min_value=min_date,
@@ -232,7 +232,7 @@ with main_tabs[1]:
     st.pyplot(fig)
 
 
-    # ==== Tab 2.4: Tren Order Bulanan Berdasarkan Segmen Pelanggan ====
+    # ==== Tab 2.4: Tren Order Bulanan berdasarkan Segmen Pelanggan ====
     st.subheader("D. Tren Order Bulanan Berdasarkan Segmen Pelanggan")
 
     main_df['order_month'] = main_df['order_purchase_timestamp'].dt.to_period('M')
@@ -284,8 +284,8 @@ with main_tabs[1]:
     st.pyplot(fig)
 
 
-    # ==== Tab 2.5: Distribusi Produk Berdasarkan Segmentasi RFM ====    
-    st.subheader("E. Distribusi Produk Berdasarkan Segmentasi RFM")
+    # ==== Tab 2.5: Distribusi Produk berdasarkan Segmentasi RFM ====    
+    st.subheader("E. Distribusi Produk berdasarkan Segmentasi RFM")
 
     selected_segment = st.selectbox("Pilih Segmen Pelanggan:", options=['Gold', 'Silver', 'Bronze', 'Inactive'])
     product_type = st.selectbox("Pilih Jenis Produk:", options=['Terlaris', 'Kurang Laku'])
@@ -306,17 +306,10 @@ with main_tabs[1]:
     
     # Visualisasi
     fig, ax = plt.subplots(figsize=(10, 5))
-    # Buat warna: bar pertama di-highlight, sisanya abu-abu
-    highlight_color = "#90CAF9"  # atau sesuaikan dengan tema segmen
+    highlight_color = "#90CAF9"
     bar_colors = [highlight_color] + ['#D3D3D3'] * (len(product_counts) - 1)
     sns.barplot(x=product_counts.values, y=product_counts.index, palette=bar_colors, ax=ax)
     ax.set_title(f"{product_type} - Segmen {selected_segment}", fontsize=16)
     ax.set_xlabel("Jumlah Order")
     ax.set_ylabel("Kategori Produk")
     st.pyplot(fig)
-
-
-
-
-
-
