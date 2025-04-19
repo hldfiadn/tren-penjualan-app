@@ -177,7 +177,6 @@ with main_tabs[0]:
 
     # Rata-rata
     with tabs[1]:
-        st.subheader("Rata-rata Nilai Transaksi per Metode Pembayaran")
         fig2, ax2 = plt.subplots(figsize=(12, 6))
         sns.barplot(x=payment_summary.index, y=payment_summary['mean'], ax=ax2)
         ax2.set_xlabel('Metode Pembayaran')
