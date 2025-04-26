@@ -11,7 +11,7 @@ def wrap_labels(labels, width=20):
 sns.set(style='dark')
 
 # Load data
-main_data_df = pd.read_csv("main_data.csv")
+main_data_df = pd.read_csv("https://raw.githubusercontent.com/hldfiadn/tren-penjualan-app/4d8ee417d84c18f228c306d74ee449e4ce086342/main_data.csv")
 main_data_df['order_purchase_timestamp'] = pd.to_datetime(main_data_df['order_purchase_timestamp'])
 
 # Sidebar filter
